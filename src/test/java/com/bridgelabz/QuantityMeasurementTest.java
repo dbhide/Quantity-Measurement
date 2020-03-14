@@ -53,4 +53,46 @@ public class QuantityMeasurementTest {
         boolean result = quantityMeasurement.equals(new QuantityMeasurement(0,Unit.FEET));
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void given0Inch_WhenComparedWithAnother0Inch_ShouldReturnTrue() {
+        quantityMeasurement = new QuantityMeasurement(0,Unit.INCH);
+        boolean result = quantityMeasurement.equals(new QuantityMeasurement(0 ,Unit.INCH));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenInch_WhenComparedWithNullValue_ShouldReturnTrue() {
+        quantityMeasurement = new QuantityMeasurement(0,Unit.INCH);
+        boolean result = quantityMeasurement.equals(null);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenInchValue_WhenComparedByReference_ShouldReturnFalse() {
+        quantityMeasurement = new QuantityMeasurement(0,Unit.INCH);
+        boolean result = quantityMeasurement.equals(new QuantityMeasurement(10,Unit.INCH));
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenInchValue_WhenComparedByType_ShouldReturnTrue() {
+        quantityMeasurement = new QuantityMeasurement(0,Unit.INCH);
+        boolean result = quantityMeasurement.equals(quantityMeasurement);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenInch_WhenComparedByValue_ShouldReturnTrue() {
+        quantityMeasurement = new QuantityMeasurement(0,Unit.INCH);
+        boolean result = quantityMeasurement.equals(new QuantityMeasurement(0,Unit.INCH));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenInch_WhenComparedByNegativeValue_ShouldReturnFalse() {
+        quantityMeasurement = new QuantityMeasurement(-5,Unit.INCH);
+        boolean result = quantityMeasurement.equals(new QuantityMeasurement(0,Unit.INCH));
+        Assert.assertFalse(result);
+    }
 }
