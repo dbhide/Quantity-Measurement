@@ -28,4 +28,9 @@ public class QuantityMeasurement {
             return false;
         return false;
     }
+
+    public QuantityMeasurement convertValue(QuantityMeasurement q1, Unit unitType) {
+        q1.value = q1.value * unitType.units;
+        return q1;
+    }
 }
