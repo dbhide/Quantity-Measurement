@@ -222,4 +222,20 @@ public class QuantityMeasurementTest {
         q2=quantityMeasurement.convertValue(q2,UnitConversion.CENTIMETER_TO_INCH);
         Assert.assertEquals(3,new Operations().addition(q1,q2),0.0);
     }
+
+    @Test
+    public void given1Gallon_WhenComparedByLitre_ShouldReturnTrue() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.GALLON);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.GALLON_TO_LITRE);
+        boolean result = q1.equals(new QuantityMeasurement(3.78, QuantityMeasurement.Unit.LITRE));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given1Litre_WhenComparedBy1000MilliLitre_ShouldReturnTrue() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.LITRE);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.LITRE_TO_MILLILITRE);
+        boolean result = q1.equals(new QuantityMeasurement(1000, QuantityMeasurement.Unit.MILLILITRE));
+        Assert.assertTrue(result);
+    }
 }
