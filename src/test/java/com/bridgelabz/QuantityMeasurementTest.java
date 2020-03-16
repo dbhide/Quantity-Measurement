@@ -255,4 +255,29 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(2,new Operations().addition(q1,q2),0.0);
     }
 
+    @Test
+    public void given1Kilogram_WhenComparedBy1000Gram_ShouldReturnTrue() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.KILOGRAM);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.KILOGRAM_TO_GRAM);
+        boolean result = q1.equals(new QuantityMeasurement(1000, QuantityMeasurement.Unit.GRAM));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given1Tonne_WhenComparedBy1000Kilogram_ShouldReturnTrue() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.TONNE);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.TONNE_TO_KILOGRAM);
+        boolean result = q1.equals(new QuantityMeasurement(1000, QuantityMeasurement.Unit.KILOGRAM));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenTwoWeights_WhenAdded_ShouldReturn_1001Kilogram() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.TONNE);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.TONNE_TO_KILOGRAM);
+        QuantityMeasurement q2=new QuantityMeasurement(1000, QuantityMeasurement.Unit.GRAM);
+        q2=quantityMeasurement.convertValue(q2,UnitConversion.GRAM_TO_KILOGRAM);
+        Assert.assertEquals(1001,new Operations().addition(q1,q2),0.0);
+    }
+
 }

@@ -11,7 +11,7 @@ public class QuantityMeasurement {
 
     }
 
-    public enum Unit{FEET, INCH, YARD,CENTIMETER,GALLON, MILLILITRE, LITRE};
+    public enum Unit{FEET, INCH, YARD,CENTIMETER,GALLON, MILLILITRE, LITRE,KILOGRAM,GRAM,TONNE};
 
     public QuantityMeasurement(double value, Unit unitType) {
         this.value = value;

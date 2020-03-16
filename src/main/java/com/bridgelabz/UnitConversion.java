@@ -10,8 +10,11 @@ public enum UnitConversion {
     INCH_TO_CENTIMETER(2.54),
     CENTIMETER_TO_INCH(1 / 2.54),
     GALLON_TO_LITRE(3.78),
-    LITRE_TO_MILLILITRE(1000),
-    MILLIILITRE_TO_LITRE(1 / 1000.0);
+    LITRE_TO_MILLILITRE(1000.0),
+    MILLIILITRE_TO_LITRE(1 / 1000.0),
+    KILOGRAM_TO_GRAM(1000.0),
+    GRAM_TO_KILOGRAM(1 / 1000.0),
+    TONNE_TO_KILOGRAM(1000.0);
     double units;
 
     UnitConversion(double unit) {
