@@ -34,8 +34,6 @@ public class QuantityMeasurement {
         QuantityMeasurement that = (QuantityMeasurement) o;
         if(Objects.equals(value, that.value))
             return true;
-        if(o != this)
-            return false;
         return false;
     }
 }

@@ -4,14 +4,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-
 public class QuantityMeasurementTest {
     QuantityMeasurement quantityMeasurement;
     Operations operation;
 
     @Before
-    public void setUp() throws IOException {
+    public void setUp() {
         quantityMeasurement=new QuantityMeasurement();
         operation =new Operations();
         quantityMeasurement.setOperation(operation);
@@ -256,7 +254,7 @@ public class QuantityMeasurementTest {
     public void givenTwoVolumes_WhenAdded_ShouldReturn2Litre() {
         QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.LITRE);
         QuantityMeasurement q2=new QuantityMeasurement(1000, QuantityMeasurement.Unit.MILLILITRE);
-        q2=quantityMeasurement.convertValue(q2,UnitConversion.MILLIILITRE_TO_LITRE);
+        q2=quantityMeasurement.convertValue(q2,UnitConversion.MILLILITRE_TO_LITRE);
         Assert.assertEquals(2, operation.addition(q1,q2),0.0);
     }
 
@@ -287,9 +285,10 @@ public class QuantityMeasurementTest {
 
     @Test
     public void given212Fahrenheit_WhenComparedBy100Celsius_ShouldReturnTrue() {
-        QuantityMeasurement q1 = new QuantityMeasurement(212, QuantityMeasurement.Unit.FAHRENHEIT);
+        QuantityMeasurement q1 = new QuantityMeasurement(90, QuantityMeasurement.Unit.FAHRENHEIT);
         q1=quantityMeasurement.convertValue(q1,UnitConversion.FAHRENHEIT_TO_CELSIUS);
-        boolean result = q1.equals(new QuantityMeasurement(100, QuantityMeasurement.Unit.CELSIUS));
+        System.out.println(q1.value);
+        boolean result = q1.equals(new QuantityMeasurement(32.22, QuantityMeasurement.Unit.CELSIUS));
         Assert.assertTrue(result);
     }
 }
