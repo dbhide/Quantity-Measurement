@@ -32,9 +32,9 @@ public class QuantityMeasurement {
         return false;
     }
 
-    public QuantityMeasurement convertValue(QuantityMeasurement q1, UnitConversion unitType) {
+    public QuantityMeasurement convertValue(QuantityMeasurement q, UnitConversion unitType) {
 
-        q1.value = q1.value * unitType.units;
-        return q1;
+        q.value = q.value * unitType.units;
+        return q;
     }
 }

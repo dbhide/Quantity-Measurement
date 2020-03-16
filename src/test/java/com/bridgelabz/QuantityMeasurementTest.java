@@ -220,7 +220,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement q1 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
         QuantityMeasurement q2 = new QuantityMeasurement(2.5, QuantityMeasurement.Unit.CENTIMETER);
         q2=quantityMeasurement.convertValue(q2,UnitConversion.CENTIMETER_TO_INCH);
-        Assert.assertEquals(3,new Operations().addition(q1,q2),0.0);
+        Assert.assertEquals(2.98,new Operations().addition(q1,q2),0.0);
     }
 
     @Test
@@ -238,4 +238,21 @@ public class QuantityMeasurementTest {
         boolean result = q1.equals(new QuantityMeasurement(1000, QuantityMeasurement.Unit.MILLILITRE));
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void givenTwoVolumes_WhenAdded_ShouldReturnLitre() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.GALLON);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.GALLON_TO_LITRE);
+        QuantityMeasurement q2=new QuantityMeasurement(3.78, QuantityMeasurement.Unit.LITRE);
+        Assert.assertEquals(7.56,new Operations().addition(q1,q2),0.0);
+    }
+
+    @Test
+    public void givenTwoVolumes_WhenAdded_ShouldReturn2Litre() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.LITRE);
+        QuantityMeasurement q2=new QuantityMeasurement(1000, QuantityMeasurement.Unit.MILLILITRE);
+        q2=quantityMeasurement.convertValue(q2,UnitConversion.MILLIILITRE_TO_LITRE);
+        Assert.assertEquals(2,new Operations().addition(q1,q2),0.0);
+    }
+
 }
