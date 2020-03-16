@@ -4,12 +4,17 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class QuantityMeasurementTest {
     QuantityMeasurement quantityMeasurement;
+    Operations operation;
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         quantityMeasurement=new QuantityMeasurement();
+        operation =new Operations();
+        quantityMeasurement.setOperation(operation);
     }
 
     @Test
@@ -195,7 +200,7 @@ public class QuantityMeasurementTest {
     public void givenTwoLengths_WhenAdded_ShouldReturn_4Inch() {
         QuantityMeasurement q1 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
         QuantityMeasurement q2 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
-        Assert.assertEquals(4,new Operations().addition(q1,q2),0.0);
+        Assert.assertEquals(4, operation.addition(q1,q2),0.0);
     }
 
     @Test
@@ -203,7 +208,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.FEET);
         q1=quantityMeasurement.convertValue(q1,UnitConversion.FEET_TO_INCH);
         QuantityMeasurement q2 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
-        Assert.assertEquals(14,new Operations().addition(q1,q2),0.0);
+        Assert.assertEquals(14, operation.addition(q1,q2),0.0);
     }
 
     @Test
@@ -212,7 +217,7 @@ public class QuantityMeasurementTest {
         q1=quantityMeasurement.convertValue(q1,UnitConversion.FEET_TO_INCH);
         QuantityMeasurement q2 = new QuantityMeasurement(1, QuantityMeasurement.Unit.FEET);
         q2=quantityMeasurement.convertValue(q2,UnitConversion.FEET_TO_INCH);
-        Assert.assertEquals(24,new Operations().addition(q1,q2),0.0);
+        Assert.assertEquals(24, operation.addition(q1,q2),0.0);
     }
 
     @Test
@@ -220,7 +225,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement q1 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
         QuantityMeasurement q2 = new QuantityMeasurement(2.5, QuantityMeasurement.Unit.CENTIMETER);
         q2=quantityMeasurement.convertValue(q2,UnitConversion.CENTIMETER_TO_INCH);
-        Assert.assertEquals(2.98,new Operations().addition(q1,q2),0.0);
+        Assert.assertEquals(2.98, operation.addition(q1,q2),0.0);
     }
 
     @Test
@@ -244,7 +249,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.GALLON);
         q1=quantityMeasurement.convertValue(q1,UnitConversion.GALLON_TO_LITRE);
         QuantityMeasurement q2=new QuantityMeasurement(3.78, QuantityMeasurement.Unit.LITRE);
-        Assert.assertEquals(7.56,new Operations().addition(q1,q2),0.0);
+        Assert.assertEquals(7.56, operation.addition(q1,q2),0.0);
     }
 
     @Test
@@ -252,7 +257,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.LITRE);
         QuantityMeasurement q2=new QuantityMeasurement(1000, QuantityMeasurement.Unit.MILLILITRE);
         q2=quantityMeasurement.convertValue(q2,UnitConversion.MILLIILITRE_TO_LITRE);
-        Assert.assertEquals(2,new Operations().addition(q1,q2),0.0);
+        Assert.assertEquals(2, operation.addition(q1,q2),0.0);
     }
 
     @Test
@@ -277,7 +282,7 @@ public class QuantityMeasurementTest {
         q1=quantityMeasurement.convertValue(q1,UnitConversion.TONNE_TO_KILOGRAM);
         QuantityMeasurement q2=new QuantityMeasurement(1000, QuantityMeasurement.Unit.GRAM);
         q2=quantityMeasurement.convertValue(q2,UnitConversion.GRAM_TO_KILOGRAM);
-        Assert.assertEquals(1001,new Operations().addition(q1,q2),0.0);
+        Assert.assertEquals(1001, operation.addition(q1,q2),0.0);
     }
 
     @Test
@@ -287,5 +292,4 @@ public class QuantityMeasurementTest {
         boolean result = q1.equals(new QuantityMeasurement(100, QuantityMeasurement.Unit.CELSIUS));
         Assert.assertTrue(result);
     }
-
 }
