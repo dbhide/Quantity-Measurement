@@ -7,11 +7,9 @@ public class QuantityMeasurement {
     public double value;
     public Unit unitType;
 
-    public QuantityMeasurement() {
+    public enum Unit{FEET, INCH, YARD,CENTIMETER,GALLON, MILLILITRE, LITRE,KILOGRAM,GRAM, FAHRENHEIT, CELSIUS, TONNE};
 
-    }
-
-    public enum Unit{FEET, INCH, YARD,CENTIMETER,GALLON, MILLILITRE, LITRE,KILOGRAM,GRAM,TONNE};
+    public QuantityMeasurement() { }
 
     public QuantityMeasurement(double value, Unit unitType) {
         this.value = value;
@@ -33,7 +31,6 @@ public class QuantityMeasurement {
     }
 
     public QuantityMeasurement convertValue(QuantityMeasurement q, UnitConversion unitType) {
-
         q.value = q.value * unitType.units;
         return q;
     }

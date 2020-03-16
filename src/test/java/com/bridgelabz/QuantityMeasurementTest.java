@@ -280,4 +280,12 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(1001,new Operations().addition(q1,q2),0.0);
     }
 
+    @Test
+    public void given212Fahrenheit_WhenComparedBy100Celsius_ShouldReturnTrue() {
+        QuantityMeasurement q1 = new QuantityMeasurement(212, QuantityMeasurement.Unit.FAHRENHEIT);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.FAHRENHEIT_TO_CELSIUS);
+        boolean result = q1.equals(new QuantityMeasurement(100, QuantityMeasurement.Unit.CELSIUS));
+        Assert.assertTrue(result);
+    }
+
 }
