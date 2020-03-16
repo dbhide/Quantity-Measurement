@@ -190,4 +190,36 @@ public class QuantityMeasurementTest {
         boolean result = q1.equals(new QuantityMeasurement(5.08, QuantityMeasurement.Unit.CENTIMETER));
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void givenTwoLengths_WhenAdded_ShouldReturn_4Inch() {
+        QuantityMeasurement q1 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
+        QuantityMeasurement q2 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
+        Assert.assertEquals(4,new Operations().addition(q1,q2),0.0);
+    }
+
+    @Test
+    public void givenTwoLengths_WhenAdded_ShouldReturn_14Inch() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.FEET);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.FEET_TO_INCH);
+        QuantityMeasurement q2 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
+        Assert.assertEquals(14,new Operations().addition(q1,q2),0.0);
+    }
+
+    @Test
+    public void givenTwoLengths_WhenAdded_ShouldReturn_24Inch() {
+        QuantityMeasurement q1 = new QuantityMeasurement(1, QuantityMeasurement.Unit.FEET);
+        q1=quantityMeasurement.convertValue(q1,UnitConversion.FEET_TO_INCH);
+        QuantityMeasurement q2 = new QuantityMeasurement(1, QuantityMeasurement.Unit.FEET);
+        q2=quantityMeasurement.convertValue(q2,UnitConversion.FEET_TO_INCH);
+        Assert.assertEquals(24,new Operations().addition(q1,q2),0.0);
+    }
+
+    @Test
+    public void givenTwoLengths_WhenAdded_ShouldReturn_3Inch() {
+        QuantityMeasurement q1 = new QuantityMeasurement(2, QuantityMeasurement.Unit.INCH);
+        QuantityMeasurement q2 = new QuantityMeasurement(2.5, QuantityMeasurement.Unit.CENTIMETER);
+        q2=quantityMeasurement.convertValue(q2,UnitConversion.CENTIMETER_TO_INCH);
+        Assert.assertEquals(3,new Operations().addition(q1,q2),0.0);
+    }
 }
