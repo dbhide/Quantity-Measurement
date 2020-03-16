@@ -7,12 +7,15 @@ public class QuantityMeasurement {
     public double value;
     public Unit unitType;
 
+    public QuantityMeasurement() {
+
+    }
+
+    public enum Unit{FEET, INCH, YARD};
+
     public QuantityMeasurement(double value, Unit unitType) {
         this.value = value;
         this.unitType = unitType;
-    }
-
-    public QuantityMeasurement() {
     }
 
     @Override
@@ -29,7 +32,8 @@ public class QuantityMeasurement {
         return false;
     }
 
-    public QuantityMeasurement convertValue(QuantityMeasurement q1, Unit unitType) {
+    public QuantityMeasurement convertValue(QuantityMeasurement q1, UnitConversion unitType) {
+
         q1.value = q1.value * unitType.units;
         return q1;
     }
