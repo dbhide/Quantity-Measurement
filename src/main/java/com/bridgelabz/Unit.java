@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
-public enum UnitConversion {
-
+public enum Unit {
+    FEET(1), INCH(1), YARD(1),CENTIMETER(1),GALLON(1), MILLILITRE(1), LITRE(1),KILOGRAM(1),GRAM(1), FAHRENHEIT(1), CELSIUS(1), TONNE(1),
     INCH_TO_FEET(1 / 12.0),
     FEET_TO_INCH(1 * 12.0),
     FFET_TO_YARD(1 / 3.0),
@@ -20,7 +20,7 @@ public enum UnitConversion {
 
     double units;
 
-    UnitConversion(double unit) {
+    Unit(double unit) {
         this.units = unit;
     }
 }

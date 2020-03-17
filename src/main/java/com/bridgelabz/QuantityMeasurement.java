@@ -8,21 +8,23 @@ public class QuantityMeasurement {
     public Unit unitType;
     private Operations operation;
 
-    public enum Unit{FEET, INCH, YARD,CENTIMETER,GALLON, MILLILITRE, LITRE,KILOGRAM,GRAM, FAHRENHEIT, CELSIUS, TONNE};
-
-    public QuantityMeasurement() { }
-
-    public void setOperation(Operations operation) {
-        this.operation=operation;
-    }
+    public QuantityMeasurement() {};
 
     public QuantityMeasurement(double value, Unit unitType) {
         this.value = value;
         this.unitType = unitType;
     }
 
-    public QuantityMeasurement convertValue(QuantityMeasurement q, UnitConversion unitType) {
+    public void setOperation(Operations operation) {
+        this.operation=operation;
+    }
+
+    public QuantityMeasurement convertValue(QuantityMeasurement q,Unit unitType) {
         return this.operation.convert(q,unitType);
+    }
+
+    public double addition(QuantityMeasurement q1, QuantityMeasurement q2) {
+        return this.operation.addition(q1,q2);
     }
 
     @Override

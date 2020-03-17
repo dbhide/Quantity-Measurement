@@ -6,8 +6,8 @@ public class Operations {
         return Double.parseDouble(String.format("%.2f", q1.value+q2.value));
     }
 
-    public QuantityMeasurement convert(QuantityMeasurement q, UnitConversion unitType) {
-        if(q.unitType.equals(QuantityMeasurement.Unit.FAHRENHEIT))
+    public QuantityMeasurement convert(QuantityMeasurement q, Unit unitType) {
+        if(q.unitType.equals(Unit.FAHRENHEIT))
             q.value = Double.parseDouble(String.format("%.2f",(q.value - 32) * unitType.units));
         else
             q.value = Double.parseDouble(String.format("%.2f",q.value * unitType.units));
