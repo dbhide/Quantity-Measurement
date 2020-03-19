@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/QuantityMeasurement.iml" filepath="$PROJECT_DIR$/.idea/modules/QuantityMeasurement.iml" group="QuantityMeasurement" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/QuantityMeasurement.main.iml" filepath="$PROJECT_DIR$/.idea/modules/QuantityMeasurement.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/QuantityMeasurement.test.iml" filepath="$PROJECT_DIR$/.idea/modules/QuantityMeasurement.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.example.QuantityMeasurement.iml" filepath="$PROJECT_DIR$/.idea/modules/org.example.QuantityMeasurement.iml" />
+    </modules>
+  </component>
+</project>

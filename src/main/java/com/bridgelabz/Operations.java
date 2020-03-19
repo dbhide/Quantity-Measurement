@@ -6,7 +6,7 @@ public class Operations {
         return Double.parseDouble(String.format("%.2f", q));
     }
 
-    public QuantityMeasurement convert(QuantityMeasurement q, UnitConversion unitType) {
+    public QuantityMeasurement convert(QuantityMeasurement q, Unit unitType) {
         q.value = q.value * unitType.units;
         return q;
     }
