@@ -5,22 +5,35 @@ import java.util.Objects;
 public class QuantityMeasurement {
 
     public double value;
-    public Unit unitType;
-    private Measurement operation;
+    public Unit unit;
+    private Measurement measurement;
+    private UnitType unitType;
     public QuantityMeasurement() { }
 
-    public void setOperation(Measurement operation) {
-        this.operation = operation;
+    public void setMeasure(Measurement measure) {
+        this.measurement = measure;
     }
-    public QuantityMeasurement(double value, Unit unitType) {
+    public QuantityMeasurement(double value, Unit unit ,UnitType unitType) {
         this.value = value;
-        this.unitType = unitType;
+        this.unit = unit;
+        this.unitType=unitType;
+    }
+
+    public double getTotal(QuantityMeasurement q1, QuantityMeasurement q2){
+        if(!q1.unitType.equals(q2.unitType))
+            return 0.0;
+        return Double.parseDouble(String.format("%.2f",this.convert(q2).value+this.convert(q1).value));
     }
 
     public boolean compare(QuantityMeasurement q1, QuantityMeasurement q2){
-        if(q1.unitType.equals(q2.unitType))
-            return Double.compare(q1.value,q2.value) == 0;
-        return Double.compare(operation.convert(q1,q1.unitType).value,operation.convert(q2,q2.unitType).value) == 0;
+        if(!q1.unitType.equals(q2.unitType))
+            return false;
+        return Double.compare(this.convert(q1).value, this.convert(q2).value) == 0;
+    }
+
+    private QuantityMeasurement convert(QuantityMeasurement q) {
+        q=measurement.convert(q,q.unit);
+        return q;
     }
 
     @Override
@@ -37,10 +50,4 @@ public class QuantityMeasurement {
         return false;
     }
 
-    public double getTotal(QuantityMeasurement q1, QuantityMeasurement q2) {
-        q1=operation.convert(q1,q1.unitType);
-        q2=operation.convert(q2,q2.unitType);
-        double total=operation.addition(q1, q2);
-        return total;
-    }
 }
