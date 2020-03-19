@@ -195,6 +195,7 @@ public class QuantityMeasurementTest {
 
     @Test
     public void given1Gallon_WhenComparedByLitre_ShouldReturnTrue() {
+        quantityMeasurement.setMeasure(new Volume());
         boolean result = quantityMeasurement.compare(new QuantityMeasurement(1,Unit.GALLON,UnitType.VOLUME),new QuantityMeasurement(3.78,Unit.LITRE,UnitType.VOLUME));
         Assert.assertTrue(result);
     }
@@ -215,24 +216,28 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenTwoVolumes_WhenAdded_ShouldReturn2Litre() {
+        quantityMeasurement.setMeasure(new Volume());
         double total=quantityMeasurement.getTotal(new QuantityMeasurement(1,Unit.LITRE,UnitType.VOLUME),new QuantityMeasurement(1000,Unit.MILLILITRE,UnitType.VOLUME));
         Assert.assertEquals(2, total,0.0);
     }
 
     @Test
     public void given1Kilogram_WhenComparedBy1000Gram_ShouldReturnTrue() {
+        quantityMeasurement.setMeasure(new Weight());
         boolean result = quantityMeasurement.compare(new QuantityMeasurement(1,Unit.KILOGRAM,UnitType.WEIGHT),new QuantityMeasurement(1000,Unit.GRAM,UnitType.WEIGHT));
         Assert.assertTrue(result);
     }
 
     @Test
     public void given1Tonne_WhenComparedBy1000Kilogram_ShouldReturnTrue() {
+        quantityMeasurement.setMeasure(new Weight());
         boolean result = quantityMeasurement.compare(new QuantityMeasurement(1,Unit.TONNE,UnitType.WEIGHT),new QuantityMeasurement(1000,Unit.KILOGRAM,UnitType.WEIGHT));
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenTwoWeights_WhenAdded_ShouldReturn_1001Kilogram() {
+        quantityMeasurement.setMeasure(new Weight());
         double total = quantityMeasurement.getTotal(new QuantityMeasurement(1,Unit.TONNE,UnitType.WEIGHT),new QuantityMeasurement(1000,Unit.GRAM,UnitType.WEIGHT));
         Assert.assertEquals(1001, total,0.0);
     }
